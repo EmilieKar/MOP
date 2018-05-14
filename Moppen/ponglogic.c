@@ -37,9 +37,7 @@ void move_object(object* o){
 	clear_object(o);
 	o->posx = o->posx + o->dirx;
 	o->posy = o->posy + o->diry;
-	if(o->posx <= 0 | o->posx >= 124){
-			o->dirx = -o->dirx;
-	}
+	
 	if(o->posy <= 0 | o->posy >= 60){
 		o->diry = -o->diry;
 	}

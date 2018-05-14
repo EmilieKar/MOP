@@ -103,7 +103,7 @@ void main(int argc, char **argv){
 	
 	unsigned char playerScore[2] = {0,0};
 	unsigned char *pScore;
-	
+	unsigned volatile short keys;
 	pScore = playerScore;
 	pong_inc_playerScore(pScore,1);
 	pong_inc_playerScore(pScore,2);
@@ -114,13 +114,53 @@ void main(int argc, char **argv){
 	pong_set_position(player2,127,28);
 	pong_set_position(p,64-(p->geo->sizex)/2,32-(p->geo->sizey)/2);
 
-	set_object_speed(player2,0,2);
 	p->set_speed(p,4,1);
 	while(1){
-		move_object(p);
+		keys = keyRead();
+		if(keys & (1<<4)){
+			clear_object(player1);
+			pong_set_position(player1,player1->posx,player1->posy-2);
+		}
+		if(keys & (1<<8)){
+			clear_object(player1);
+			pong_set_position(player1,player1->posx,player1->posy+2);
+		}
+		if(keys & (1<<7)){
+			clear_object(player2);
+			pong_set_position(player2,player2->posx,player2->posy-2);
+		}
+		if(keys & (1<<11)){
+			clear_object(player2);
+			pong_set_position(player2,player2->posx,player2->posy+2);
+		}
+		
 		move_object(player1);
-		move_object(player2); 
-		pong_inc_playerScore(pScore,1);
+		move_object(player2);
+		
+		if((p->posx<=2) && (p->dirx<0)){
+			if(((p->posy+(p->geo->sizey/2)) > player1->posy) && ((p->posy-(p->geo->sizey/2)) < (player1->posy + player1->geo->sizey))){
+			p->dirx = -p->dirx;	
+			}
+			else{
+				pong_inc_playerScore(pScore, 2);
+				clear_object(p);
+				pong_set_position(p,64-(p->geo->sizex/2),32-(p->geo->sizey/2));
+				set_object_speed(p,-p->dirx,p->diry);
+			}
+		}
+		if((p->posx>=(127-p->geo->sizex)) && (p->dirx > 0)){
+			if(((p->posy+(p->geo->sizey/2)) > player2->posy) && ((p->posy-(p->geo->sizey/2)) < (player2->posy + player2->geo->sizey))){
+			p->dirx = -p->dirx;	
+			}
+			else{
+				pong_inc_playerScore(pScore, 1);
+				clear_object(p);
+				pong_set_position(p,64-(p->geo->sizex/2),32-(p->geo->sizey/2));
+				set_object_speed(p,-p->dirx,p->diry);
+			}
+		}
+		move_object(p);
+		
 		delay_milli(40);
 	}
 
