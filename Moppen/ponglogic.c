@@ -48,8 +48,9 @@ void move_object(object* o){
 
 void pong_inc_playerScore(char* playerScore, char player){
 	ascii_init();
-	(*playerScore)[player-1]++;
+	playerScore[player-1]++;
 	ascii_gotoxy(10*player,1*player);
-	ascii_write_char((*playerScore)[player-1]);
+	char newScore = playerScore[player-1]+47;
+	ascii_write_char(newScore);
 	graphic_initialize();
 }

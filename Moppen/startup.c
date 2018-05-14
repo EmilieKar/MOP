@@ -76,9 +76,12 @@ void main(int argc, char **argv){
 		graphic_clean_screen();
 	#endif
 	
-	unsigned char playerScore = {0,0};
-	char* pScore = playerScore;
+	unsigned char playerScore[2] = {0,0};
+	unsigned char *pScore;
 	
+	pScore = playerScore;
+	pong_inc_playerScore(pScore,1);
+	pong_inc_playerScore(pScore,2);
 	//graphic_pixel(66,33,1);
 	pobject p = &ball;
 	pong_set_position(p,64-(p->geo->sizex)/2,32-(p->geo->sizey)/2);
@@ -87,6 +90,7 @@ void main(int argc, char **argv){
 	p->set_speed(p,4,1);
 	while(1){
 		move_object(p);
+		//playerScore[0] = playerScore[0] +1; 
 		pong_inc_playerScore(pScore,1);
 		delay_milli(40);
 	}
