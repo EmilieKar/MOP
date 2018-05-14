@@ -8,729 +8,499 @@
    8              		.eabi_attribute 30, 6
    9              		.eabi_attribute 34, 0
   10              		.eabi_attribute 18, 4
-  11              		.file	"ascii_drivers.c"
+  11              		.file	"startup.c"
   12              		.text
   13              	.Ltext0:
   14              		.cfi_sections	.debug_frame
-  15              		.align	1
-  16              		.global	ascii_ctrl_bit_set
-  17              		.syntax unified
-  18              		.code	16
-  19              		.thumb_func
-  20              		.fpu softvfp
-  22              	ascii_ctrl_bit_set:
-  23              	.LFB0:
-  24              		.file 1 "C:/Users/samue/Documents/MopLab/Moppen/ascii_drivers.c"
-   1:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-   2:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** #include "delay.h"
-   3:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** #include "ascii_drivers.h"
-   4:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** #include "portDeclare.h"
-   5:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-   6:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_ctrl_bit_set(unsigned short x){
-  25              		.loc 1 6 0
-  26              		.cfi_startproc
-  27              		@ args = 0, pretend = 0, frame = 16
-  28              		@ frame_needed = 1, uses_anonymous_args = 0
-  29 0000 80B5     		push	{r7, lr}
-  30              		.cfi_def_cfa_offset 8
-  31              		.cfi_offset 7, -8
-  32              		.cfi_offset 14, -4
-  33 0002 84B0     		sub	sp, sp, #16
-  34              		.cfi_def_cfa_offset 24
-  35 0004 00AF     		add	r7, sp, #0
-  36              		.cfi_def_cfa_register 7
-  37 0006 0200     		movs	r2, r0
-  38 0008 BB1D     		adds	r3, r7, #6
-  39 000a 1A80     		strh	r2, [r3]
-   7:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	
-   8:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	unsigned char c;
-   9:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	c = *portOdrLowE;
-  40              		.loc 1 9 0
-  41 000c 0C4A     		ldr	r2, .L2
-  42 000e 0F21     		movs	r1, #15
-  43 0010 7B18     		adds	r3, r7, r1
-  44 0012 1278     		ldrb	r2, [r2]
-  45 0014 1A70     		strb	r2, [r3]
-  10:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	c |= ( B_SELECT | x );
-  46              		.loc 1 10 0
-  47 0016 BB1D     		adds	r3, r7, #6
-  48 0018 1B88     		ldrh	r3, [r3]
-  49 001a DAB2     		uxtb	r2, r3
-  50 001c 7B18     		adds	r3, r7, r1
-  51 001e 1B78     		ldrb	r3, [r3]
-  52 0020 1343     		orrs	r3, r2
-  53 0022 DAB2     		uxtb	r2, r3
-  54 0024 0800     		movs	r0, r1
-  55 0026 7B18     		adds	r3, r7, r1
-  56 0028 0421     		movs	r1, #4
-  57 002a 0A43     		orrs	r2, r1
-  58 002c 1A70     		strb	r2, [r3]
-  11:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portOdrLowE = c; 
-  59              		.loc 1 11 0
-  60 002e 044A     		ldr	r2, .L2
-  61 0030 0100     		movs	r1, r0
-  62 0032 7B18     		adds	r3, r7, r1
-  63 0034 1B78     		ldrb	r3, [r3]
-  64 0036 1370     		strb	r3, [r2]
-  12:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
-  65              		.loc 1 12 0
-  66 0038 C046     		nop
-  67 003a BD46     		mov	sp, r7
-  68 003c 04B0     		add	sp, sp, #16
-  69              		@ sp needed
-  70 003e 80BD     		pop	{r7, pc}
-  71              	.L3:
-  72              		.align	2
-  73              	.L2:
-  74 0040 14100240 		.word	1073877012
-  75              		.cfi_endproc
-  76              	.LFE0:
-  78              		.align	1
-  79              		.global	ascii_ctrl_bit_clear
-  80              		.syntax unified
-  81              		.code	16
-  82              		.thumb_func
-  83              		.fpu softvfp
-  85              	ascii_ctrl_bit_clear:
-  86              	.LFB1:
-  13:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  14:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_ctrl_bit_clear(unsigned short x){
-  87              		.loc 1 14 0
-  88              		.cfi_startproc
-  89              		@ args = 0, pretend = 0, frame = 16
-  90              		@ frame_needed = 1, uses_anonymous_args = 0
-  91 0044 80B5     		push	{r7, lr}
-  92              		.cfi_def_cfa_offset 8
-  93              		.cfi_offset 7, -8
-  94              		.cfi_offset 14, -4
-  95 0046 84B0     		sub	sp, sp, #16
-  96              		.cfi_def_cfa_offset 24
-  97 0048 00AF     		add	r7, sp, #0
-  98              		.cfi_def_cfa_register 7
-  99 004a 0200     		movs	r2, r0
- 100 004c BB1D     		adds	r3, r7, #6
- 101 004e 1A80     		strh	r2, [r3]
-  15:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	unsigned char c;
-  16:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	c = *portOdrLowE;
- 102              		.loc 1 16 0
- 103 0050 0D4A     		ldr	r2, .L5
- 104 0052 0F21     		movs	r1, #15
- 105 0054 7B18     		adds	r3, r7, r1
- 106 0056 1278     		ldrb	r2, [r2]
- 107 0058 1A70     		strb	r2, [r3]
-  17:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	c = B_SELECT | ( c & ~x );
- 108              		.loc 1 17 0
- 109 005a BB1D     		adds	r3, r7, #6
- 110 005c 1B88     		ldrh	r3, [r3]
- 111 005e 5BB2     		sxtb	r3, r3
- 112 0060 DB43     		mvns	r3, r3
- 113 0062 5BB2     		sxtb	r3, r3
- 114 0064 7A18     		adds	r2, r7, r1
- 115 0066 1278     		ldrb	r2, [r2]
- 116 0068 52B2     		sxtb	r2, r2
- 117 006a 1340     		ands	r3, r2
- 118 006c 5BB2     		sxtb	r3, r3
- 119 006e 0422     		movs	r2, #4
- 120 0070 1343     		orrs	r3, r2
- 121 0072 5AB2     		sxtb	r2, r3
- 122 0074 7B18     		adds	r3, r7, r1
- 123 0076 1A70     		strb	r2, [r3]
-  18:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portOdrLowE = c;
- 124              		.loc 1 18 0
- 125 0078 034A     		ldr	r2, .L5
- 126 007a 7B18     		adds	r3, r7, r1
- 127 007c 1B78     		ldrb	r3, [r3]
- 128 007e 1370     		strb	r3, [r2]
-  19:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 129              		.loc 1 19 0
- 130 0080 C046     		nop
- 131 0082 BD46     		mov	sp, r7
- 132 0084 04B0     		add	sp, sp, #16
- 133              		@ sp needed
- 134 0086 80BD     		pop	{r7, pc}
- 135              	.L6:
- 136              		.align	2
- 137              	.L5:
- 138 0088 14100240 		.word	1073877012
- 139              		.cfi_endproc
- 140              	.LFE1:
- 142              		.align	1
- 143              		.global	ascii_write_controller
- 144              		.syntax unified
- 145              		.code	16
- 146              		.thumb_func
- 147              		.fpu softvfp
- 149              	ascii_write_controller:
- 150              	.LFB2:
-  20:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  21:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_write_controller(unsigned char c){
- 151              		.loc 1 21 0
- 152              		.cfi_startproc
- 153              		@ args = 0, pretend = 0, frame = 8
- 154              		@ frame_needed = 1, uses_anonymous_args = 0
- 155 008c 80B5     		push	{r7, lr}
- 156              		.cfi_def_cfa_offset 8
- 157              		.cfi_offset 7, -8
- 158              		.cfi_offset 14, -4
- 159 008e 82B0     		sub	sp, sp, #8
- 160              		.cfi_def_cfa_offset 16
- 161 0090 00AF     		add	r7, sp, #0
- 162              		.cfi_def_cfa_register 7
- 163 0092 0200     		movs	r2, r0
- 164 0094 FB1D     		adds	r3, r7, #7
- 165 0096 1A70     		strb	r2, [r3]
-  22:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_40ns();
- 166              		.loc 1 22 0
- 167 0098 FFF7FEFF 		bl	delay_40ns
-  23:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_E);
- 168              		.loc 1 23 0
- 169 009c 4020     		movs	r0, #64
- 170 009e FFF7FEFF 		bl	ascii_ctrl_bit_set
-  24:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portOdrHighE = c;
- 171              		.loc 1 24 0
- 172 00a2 054A     		ldr	r2, .L8
- 173 00a4 FB1D     		adds	r3, r7, #7
- 174 00a6 1B78     		ldrb	r3, [r3]
- 175 00a8 1370     		strb	r3, [r2]
-  25:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_250ns;
-  26:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_E);
- 176              		.loc 1 26 0
- 177 00aa 4020     		movs	r0, #64
- 178 00ac FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  27:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 179              		.loc 1 27 0
- 180 00b0 C046     		nop
- 181 00b2 BD46     		mov	sp, r7
- 182 00b4 02B0     		add	sp, sp, #8
- 183              		@ sp needed
- 184 00b6 80BD     		pop	{r7, pc}
- 185              	.L9:
- 186              		.align	2
- 187              	.L8:
- 188 00b8 15100240 		.word	1073877013
- 189              		.cfi_endproc
- 190              	.LFE2:
- 192              		.align	1
- 193              		.global	ascii_read_controller
- 194              		.syntax unified
- 195              		.code	16
- 196              		.thumb_func
- 197              		.fpu softvfp
- 199              	ascii_read_controller:
- 200              	.LFB3:
-  28:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** unsigned char ascii_read_controller(void){
- 201              		.loc 1 28 0
- 202              		.cfi_startproc
- 203              		@ args = 0, pretend = 0, frame = 8
- 204              		@ frame_needed = 1, uses_anonymous_args = 0
- 205 00bc 80B5     		push	{r7, lr}
- 206              		.cfi_def_cfa_offset 8
- 207              		.cfi_offset 7, -8
- 208              		.cfi_offset 14, -4
- 209 00be 82B0     		sub	sp, sp, #8
- 210              		.cfi_def_cfa_offset 16
- 211 00c0 00AF     		add	r7, sp, #0
- 212              		.cfi_def_cfa_register 7
-  29:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_E);
- 213              		.loc 1 29 0
- 214 00c2 4020     		movs	r0, #64
- 215 00c4 FFF7FEFF 		bl	ascii_ctrl_bit_set
-  30:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_250ns;
-  31:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_250ns;
-  32:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	unsigned char rv = *portIdrHighE;
- 216              		.loc 1 32 0
- 217 00c8 064A     		ldr	r2, .L12
- 218 00ca FB1D     		adds	r3, r7, #7
- 219 00cc 1278     		ldrb	r2, [r2]
- 220 00ce 1A70     		strb	r2, [r3]
-  33:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_E);
- 221              		.loc 1 33 0
- 222 00d0 4020     		movs	r0, #64
- 223 00d2 FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  34:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	return rv;
- 224              		.loc 1 34 0
- 225 00d6 FB1D     		adds	r3, r7, #7
- 226 00d8 1B78     		ldrb	r3, [r3]
-  35:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 227              		.loc 1 35 0
- 228 00da 1800     		movs	r0, r3
- 229 00dc BD46     		mov	sp, r7
- 230 00de 02B0     		add	sp, sp, #8
- 231              		@ sp needed
- 232 00e0 80BD     		pop	{r7, pc}
- 233              	.L13:
- 234 00e2 C046     		.align	2
- 235              	.L12:
- 236 00e4 11100240 		.word	1073877009
- 237              		.cfi_endproc
- 238              	.LFE3:
- 240              		.align	1
- 241              		.global	ascii_write_cmd
- 242              		.syntax unified
- 243              		.code	16
- 244              		.thumb_func
- 245              		.fpu softvfp
- 247              	ascii_write_cmd:
- 248              	.LFB4:
-  36:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  37:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_write_cmd(unsigned char command){
- 249              		.loc 1 37 0
- 250              		.cfi_startproc
- 251              		@ args = 0, pretend = 0, frame = 8
- 252              		@ frame_needed = 1, uses_anonymous_args = 0
- 253 00e8 80B5     		push	{r7, lr}
- 254              		.cfi_def_cfa_offset 8
- 255              		.cfi_offset 7, -8
- 256              		.cfi_offset 14, -4
- 257 00ea 82B0     		sub	sp, sp, #8
- 258              		.cfi_def_cfa_offset 16
- 259 00ec 00AF     		add	r7, sp, #0
- 260              		.cfi_def_cfa_register 7
- 261 00ee 0200     		movs	r2, r0
- 262 00f0 FB1D     		adds	r3, r7, #7
- 263 00f2 1A70     		strb	r2, [r3]
-  38:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_RS);
- 264              		.loc 1 38 0
- 265 00f4 0120     		movs	r0, #1
- 266 00f6 FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  39:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_RW);
- 267              		.loc 1 39 0
- 268 00fa 0220     		movs	r0, #2
- 269 00fc FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  40:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_controller(command);
- 270              		.loc 1 40 0
- 271 0100 FB1D     		adds	r3, r7, #7
- 272 0102 1B78     		ldrb	r3, [r3]
- 273 0104 1800     		movs	r0, r3
- 274 0106 FFF7FEFF 		bl	ascii_write_controller
-  41:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 275              		.loc 1 41 0
- 276 010a C046     		nop
- 277 010c BD46     		mov	sp, r7
- 278 010e 02B0     		add	sp, sp, #8
- 279              		@ sp needed
- 280 0110 80BD     		pop	{r7, pc}
- 281              		.cfi_endproc
- 282              	.LFE4:
- 284              		.align	1
- 285              		.global	ascii_write_data
- 286              		.syntax unified
- 287              		.code	16
- 288              		.thumb_func
- 289              		.fpu softvfp
- 291              	ascii_write_data:
- 292              	.LFB5:
-  42:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  43:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_write_data(unsigned char data){
- 293              		.loc 1 43 0
- 294              		.cfi_startproc
- 295              		@ args = 0, pretend = 0, frame = 8
- 296              		@ frame_needed = 1, uses_anonymous_args = 0
- 297 0112 80B5     		push	{r7, lr}
- 298              		.cfi_def_cfa_offset 8
- 299              		.cfi_offset 7, -8
- 300              		.cfi_offset 14, -4
- 301 0114 82B0     		sub	sp, sp, #8
- 302              		.cfi_def_cfa_offset 16
- 303 0116 00AF     		add	r7, sp, #0
- 304              		.cfi_def_cfa_register 7
- 305 0118 0200     		movs	r2, r0
- 306 011a FB1D     		adds	r3, r7, #7
- 307 011c 1A70     		strb	r2, [r3]
-  44:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_RS);
- 308              		.loc 1 44 0
- 309 011e 0120     		movs	r0, #1
- 310 0120 FFF7FEFF 		bl	ascii_ctrl_bit_set
-  45:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_RW);
- 311              		.loc 1 45 0
- 312 0124 0220     		movs	r0, #2
- 313 0126 FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  46:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_controller(data);
- 314              		.loc 1 46 0
- 315 012a FB1D     		adds	r3, r7, #7
- 316 012c 1B78     		ldrb	r3, [r3]
- 317 012e 1800     		movs	r0, r3
- 318 0130 FFF7FEFF 		bl	ascii_write_controller
-  47:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 319              		.loc 1 47 0
- 320 0134 C046     		nop
- 321 0136 BD46     		mov	sp, r7
- 322 0138 02B0     		add	sp, sp, #8
- 323              		@ sp needed
- 324 013a 80BD     		pop	{r7, pc}
- 325              		.cfi_endproc
- 326              	.LFE5:
- 328              		.align	1
- 329              		.global	ascii_read_status
- 330              		.syntax unified
- 331              		.code	16
- 332              		.thumb_func
- 333              		.fpu softvfp
- 335              	ascii_read_status:
- 336              	.LFB6:
-  48:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  49:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** unsigned char ascii_read_status(void){
- 337              		.loc 1 49 0
- 338              		.cfi_startproc
- 339              		@ args = 0, pretend = 0, frame = 8
- 340              		@ frame_needed = 1, uses_anonymous_args = 0
- 341 013c 80B5     		push	{r7, lr}
- 342              		.cfi_def_cfa_offset 8
- 343              		.cfi_offset 7, -8
- 344              		.cfi_offset 14, -4
- 345 013e 82B0     		sub	sp, sp, #8
- 346              		.cfi_def_cfa_offset 16
- 347 0140 00AF     		add	r7, sp, #0
- 348              		.cfi_def_cfa_register 7
-  50:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portModerE = (*portModerE & 0x0000FFFF);
- 349              		.loc 1 50 0
- 350 0142 0C4B     		ldr	r3, .L18
- 351 0144 1A68     		ldr	r2, [r3]
- 352 0146 0B4B     		ldr	r3, .L18
- 353 0148 1204     		lsls	r2, r2, #16
- 354 014a 120C     		lsrs	r2, r2, #16
- 355 014c 1A60     		str	r2, [r3]
-  51:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_clear(B_RS);
- 356              		.loc 1 51 0
- 357 014e 0120     		movs	r0, #1
- 358 0150 FFF7FEFF 		bl	ascii_ctrl_bit_clear
-  52:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_RW);
- 359              		.loc 1 52 0
- 360 0154 0220     		movs	r0, #2
- 361 0156 FFF7FEFF 		bl	ascii_ctrl_bit_set
-  53:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	unsigned char rv; 
-  54:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	#ifndef SIMULATOR
-  55:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 		rv = ascii_read_controller();
-  56:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	#endif
-  57:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portModerE = (*portModerE | 0x55550000);
- 362              		.loc 1 57 0
- 363 015a 064B     		ldr	r3, .L18
- 364 015c 1A68     		ldr	r2, [r3]
- 365 015e 054B     		ldr	r3, .L18
- 366 0160 0549     		ldr	r1, .L18+4
- 367 0162 0A43     		orrs	r2, r1
- 368 0164 1A60     		str	r2, [r3]
-  58:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	return rv;
- 369              		.loc 1 58 0
- 370 0166 FB1D     		adds	r3, r7, #7
- 371 0168 1B78     		ldrb	r3, [r3]
-  59:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 372              		.loc 1 59 0
- 373 016a 1800     		movs	r0, r3
- 374 016c BD46     		mov	sp, r7
- 375 016e 02B0     		add	sp, sp, #8
- 376              		@ sp needed
- 377 0170 80BD     		pop	{r7, pc}
- 378              	.L19:
- 379 0172 C046     		.align	2
- 380              	.L18:
- 381 0174 00100240 		.word	1073876992
- 382 0178 00005555 		.word	1431633920
- 383              		.cfi_endproc
- 384              	.LFE6:
- 386              		.align	1
- 387              		.global	ascii_read_data
- 388              		.syntax unified
- 389              		.code	16
- 390              		.thumb_func
- 391              		.fpu softvfp
- 393              	ascii_read_data:
- 394              	.LFB7:
-  60:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  61:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** unsigned char ascii_read_data(void){
- 395              		.loc 1 61 0
- 396              		.cfi_startproc
- 397              		@ args = 0, pretend = 0, frame = 8
- 398              		@ frame_needed = 1, uses_anonymous_args = 0
- 399 017c 90B5     		push	{r4, r7, lr}
- 400              		.cfi_def_cfa_offset 12
- 401              		.cfi_offset 4, -12
- 402              		.cfi_offset 7, -8
- 403              		.cfi_offset 14, -4
- 404 017e 83B0     		sub	sp, sp, #12
- 405              		.cfi_def_cfa_offset 24
- 406 0180 00AF     		add	r7, sp, #0
- 407              		.cfi_def_cfa_register 7
-  62:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portModerE = (*portModerE & 0x0000FFFF);
- 408              		.loc 1 62 0
- 409 0182 0E4B     		ldr	r3, .L22
- 410 0184 1A68     		ldr	r2, [r3]
- 411 0186 0D4B     		ldr	r3, .L22
- 412 0188 1204     		lsls	r2, r2, #16
- 413 018a 120C     		lsrs	r2, r2, #16
- 414 018c 1A60     		str	r2, [r3]
-  63:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_RS);
- 415              		.loc 1 63 0
- 416 018e 0120     		movs	r0, #1
- 417 0190 FFF7FEFF 		bl	ascii_ctrl_bit_set
-  64:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_ctrl_bit_set(B_RW);
- 418              		.loc 1 64 0
- 419 0194 0220     		movs	r0, #2
- 420 0196 FFF7FEFF 		bl	ascii_ctrl_bit_set
-  65:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	unsigned char rv = ascii_read_controller();
- 421              		.loc 1 65 0
- 422 019a FC1D     		adds	r4, r7, #7
- 423 019c FFF7FEFF 		bl	ascii_read_controller
- 424 01a0 0300     		movs	r3, r0
- 425 01a2 2370     		strb	r3, [r4]
-  66:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portModerE = (*portModerE | 0x55550000);
- 426              		.loc 1 66 0
- 427 01a4 054B     		ldr	r3, .L22
- 428 01a6 1A68     		ldr	r2, [r3]
- 429 01a8 044B     		ldr	r3, .L22
- 430 01aa 0549     		ldr	r1, .L22+4
- 431 01ac 0A43     		orrs	r2, r1
- 432 01ae 1A60     		str	r2, [r3]
-  67:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	return rv;
- 433              		.loc 1 67 0
- 434 01b0 FB1D     		adds	r3, r7, #7
- 435 01b2 1B78     		ldrb	r3, [r3]
-  68:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 436              		.loc 1 68 0
- 437 01b4 1800     		movs	r0, r3
- 438 01b6 BD46     		mov	sp, r7
- 439 01b8 03B0     		add	sp, sp, #12
- 440              		@ sp needed
- 441 01ba 90BD     		pop	{r4, r7, pc}
- 442              	.L23:
- 443              		.align	2
- 444              	.L22:
- 445 01bc 00100240 		.word	1073876992
- 446 01c0 00005555 		.word	1431633920
- 447              		.cfi_endproc
- 448              	.LFE7:
- 450              		.align	1
- 451              		.global	ascii_init
- 452              		.syntax unified
- 453              		.code	16
- 454              		.thumb_func
- 455              		.fpu softvfp
- 457              	ascii_init:
- 458              	.LFB8:
-  69:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  70:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_init(void){
- 459              		.loc 1 70 0
- 460              		.cfi_startproc
- 461              		@ args = 0, pretend = 0, frame = 0
- 462              		@ frame_needed = 1, uses_anonymous_args = 0
- 463 01c4 80B5     		push	{r7, lr}
- 464              		.cfi_def_cfa_offset 8
- 465              		.cfi_offset 7, -8
- 466              		.cfi_offset 14, -4
- 467 01c6 00AF     		add	r7, sp, #0
- 468              		.cfi_def_cfa_register 7
-  71:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	while((ascii_read_status() & 0x80) == 0x80){}
- 469              		.loc 1 71 0
- 470 01c8 C046     		nop
- 471              	.L25:
- 472              		.loc 1 71 0 is_stmt 0 discriminator 1
- 473 01ca FFF7FEFF 		bl	ascii_read_status
- 474 01ce 0300     		movs	r3, r0
- 475 01d0 1A00     		movs	r2, r3
- 476 01d2 8023     		movs	r3, #128
- 477 01d4 1340     		ands	r3, r2
- 478 01d6 802B     		cmp	r3, #128
- 479 01d8 F7D0     		beq	.L25
-  72:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	//ascii_read_status();
-  73:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(8);
- 480              		.loc 1 73 0 is_stmt 1
- 481 01da 0820     		movs	r0, #8
- 482 01dc FFF7FEFF 		bl	delay_mikro
-  74:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_cmd(0x38);
- 483              		.loc 1 74 0
- 484 01e0 3820     		movs	r0, #56
- 485 01e2 FFF7FEFF 		bl	ascii_write_cmd
-  75:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(40);
- 486              		.loc 1 75 0
- 487 01e6 2820     		movs	r0, #40
- 488 01e8 FFF7FEFF 		bl	delay_mikro
-  76:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_cmd(0xE);
- 489              		.loc 1 76 0
- 490 01ec 0E20     		movs	r0, #14
- 491 01ee FFF7FEFF 		bl	ascii_write_cmd
-  77:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(40);
- 492              		.loc 1 77 0
- 493 01f2 2820     		movs	r0, #40
- 494 01f4 FFF7FEFF 		bl	delay_mikro
-  78:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_cmd(0x4);
- 495              		.loc 1 78 0
- 496 01f8 0420     		movs	r0, #4
- 497 01fa FFF7FEFF 		bl	ascii_write_cmd
-  79:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(40);
- 498              		.loc 1 79 0
- 499 01fe 2820     		movs	r0, #40
- 500 0200 FFF7FEFF 		bl	delay_mikro
-  80:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 501              		.loc 1 80 0
- 502 0204 C046     		nop
- 503 0206 BD46     		mov	sp, r7
- 504              		@ sp needed
- 505 0208 80BD     		pop	{r7, pc}
- 506              		.cfi_endproc
- 507              	.LFE8:
- 509              		.align	1
- 510              		.global	ascii_write_char
- 511              		.syntax unified
- 512              		.code	16
- 513              		.thumb_func
- 514              		.fpu softvfp
- 516              	ascii_write_char:
- 517              	.LFB9:
-  81:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  82:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_write_char(char c){
- 518              		.loc 1 82 0
- 519              		.cfi_startproc
- 520              		@ args = 0, pretend = 0, frame = 8
- 521              		@ frame_needed = 1, uses_anonymous_args = 0
- 522 020a 80B5     		push	{r7, lr}
- 523              		.cfi_def_cfa_offset 8
- 524              		.cfi_offset 7, -8
- 525              		.cfi_offset 14, -4
- 526 020c 82B0     		sub	sp, sp, #8
- 527              		.cfi_def_cfa_offset 16
- 528 020e 00AF     		add	r7, sp, #0
- 529              		.cfi_def_cfa_register 7
- 530 0210 0200     		movs	r2, r0
- 531 0212 FB1D     		adds	r3, r7, #7
- 532 0214 1A70     		strb	r2, [r3]
-  83:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	while((ascii_read_status() & 0x80) == 0x80){}
- 533              		.loc 1 83 0
- 534 0216 C046     		nop
- 535              	.L27:
- 536              		.loc 1 83 0 is_stmt 0 discriminator 1
- 537 0218 FFF7FEFF 		bl	ascii_read_status
- 538 021c 0300     		movs	r3, r0
- 539 021e 1A00     		movs	r2, r3
- 540 0220 8023     		movs	r3, #128
- 541 0222 1340     		ands	r3, r2
- 542 0224 802B     		cmp	r3, #128
- 543 0226 F7D0     		beq	.L27
-  84:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(8);
- 544              		.loc 1 84 0 is_stmt 1
- 545 0228 0820     		movs	r0, #8
- 546 022a FFF7FEFF 		bl	delay_mikro
-  85:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_data(c);
- 547              		.loc 1 85 0
- 548 022e FB1D     		adds	r3, r7, #7
- 549 0230 1B78     		ldrb	r3, [r3]
- 550 0232 1800     		movs	r0, r3
- 551 0234 FFF7FEFF 		bl	ascii_write_data
-  86:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	delay_mikro(43);
- 552              		.loc 1 86 0
- 553 0238 2B20     		movs	r0, #43
- 554 023a FFF7FEFF 		bl	delay_mikro
-  87:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 555              		.loc 1 87 0
- 556 023e C046     		nop
- 557 0240 BD46     		mov	sp, r7
- 558 0242 02B0     		add	sp, sp, #8
- 559              		@ sp needed
- 560 0244 80BD     		pop	{r7, pc}
- 561              		.cfi_endproc
- 562              	.LFE9:
- 564              		.align	1
- 565              		.global	ascii_gotoxy
- 566              		.syntax unified
- 567              		.code	16
- 568              		.thumb_func
- 569              		.fpu softvfp
- 571              	ascii_gotoxy:
- 572              	.LFB10:
-  88:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  89:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_gotoxy(int x, int y){
- 573              		.loc 1 89 0
- 574              		.cfi_startproc
- 575              		@ args = 0, pretend = 0, frame = 16
- 576              		@ frame_needed = 1, uses_anonymous_args = 0
- 577 0246 80B5     		push	{r7, lr}
- 578              		.cfi_def_cfa_offset 8
- 579              		.cfi_offset 7, -8
- 580              		.cfi_offset 14, -4
- 581 0248 84B0     		sub	sp, sp, #16
- 582              		.cfi_def_cfa_offset 24
- 583 024a 00AF     		add	r7, sp, #0
- 584              		.cfi_def_cfa_register 7
- 585 024c 7860     		str	r0, [r7, #4]
- 586 024e 3960     		str	r1, [r7]
-  90:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	int adress = (x - 1 + (y-1)*64);
- 587              		.loc 1 90 0
- 588 0250 7B68     		ldr	r3, [r7, #4]
- 589 0252 5A1E     		subs	r2, r3, #1
- 590 0254 3B68     		ldr	r3, [r7]
- 591 0256 013B     		subs	r3, r3, #1
- 592 0258 9B01     		lsls	r3, r3, #6
- 593 025a D318     		adds	r3, r2, r3
- 594 025c FB60     		str	r3, [r7, #12]
-  91:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	ascii_write_cmd(0x80 | adress);
- 595              		.loc 1 91 0
- 596 025e FB68     		ldr	r3, [r7, #12]
- 597 0260 5BB2     		sxtb	r3, r3
- 598 0262 8022     		movs	r2, #128
- 599 0264 5242     		rsbs	r2, r2, #0
- 600 0266 1343     		orrs	r3, r2
- 601 0268 5BB2     		sxtb	r3, r3
- 602 026a DBB2     		uxtb	r3, r3
- 603 026c 1800     		movs	r0, r3
- 604 026e FFF7FEFF 		bl	ascii_write_cmd
-  92:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }
- 605              		.loc 1 92 0
- 606 0272 C046     		nop
- 607 0274 BD46     		mov	sp, r7
- 608 0276 04B0     		add	sp, sp, #16
- 609              		@ sp needed
- 610 0278 80BD     		pop	{r7, pc}
- 611              		.cfi_endproc
- 612              	.LFE10:
- 614              		.align	1
- 615              		.global	ascii_init_app
- 616              		.syntax unified
- 617              		.code	16
- 618              		.thumb_func
- 619              		.fpu softvfp
- 621              	ascii_init_app:
- 622              	.LFB11:
-  93:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  94:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** void ascii_init_app(void){
- 623              		.loc 1 94 0
- 624              		.cfi_startproc
- 625              		@ args = 0, pretend = 0, frame = 0
- 626              		@ frame_needed = 1, uses_anonymous_args = 0
- 627 027a 80B5     		push	{r7, lr}
- 628              		.cfi_def_cfa_offset 8
- 629              		.cfi_offset 7, -8
- 630              		.cfi_offset 14, -4
- 631 027c 00AF     		add	r7, sp, #0
- 632              		.cfi_def_cfa_register 7
-  95:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portModerE = 0x55555555;
- 633              		.loc 1 95 0
- 634 027e 064B     		ldr	r3, .L30
- 635 0280 064A     		ldr	r2, .L30+4
- 636 0282 1A60     		str	r2, [r3]
-  96:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portOtyperE = 0x0000;
- 637              		.loc 1 96 0
- 638 0284 064B     		ldr	r3, .L30+8
- 639 0286 0022     		movs	r2, #0
- 640 0288 1A80     		strh	r2, [r3]
-  97:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 	*portOspeedrE = 0x0000;
- 641              		.loc 1 97 0
- 642 028a 064B     		ldr	r3, .L30+12
- 643 028c 0022     		movs	r2, #0
- 644 028e 1A60     		str	r2, [r3]
-  98:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** 
-  99:C:/Users/samue/Documents/MopLab/Moppen\ascii_drivers.c **** }...
- 645              		.loc 1 99 0
- 646 0290 C046     		nop
- 647 0292 BD46     		mov	sp, r7
- 648              		@ sp needed
- 649 0294 80BD     		pop	{r7, pc}
- 650              	.L31:
- 651 0296 C046     		.align	2
- 652              	.L30:
- 653 0298 00100240 		.word	1073876992
- 654 029c 55555555 		.word	1431655765
- 655 02a0 04100240 		.word	1073876996
- 656 02a4 08100240 		.word	1073877000
- 657              		.cfi_endproc
- 658              	.LFE11:
- 660              	.Letext0:
- 661              		.file 2 "C:/Users/samue/Documents/MopLab/Moppen/portDeclare.h"
+  15              		.section	.start_section,"ax",%progbits
+  16              		.align	1
+  17              		.global	startup
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	startup:
+  24              	.LFB0:
+  25              		.file 1 "C:/Users/samue/Documents/MopLab/Moppen/startup.c"
+   1:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** /*
+   2:C:/Users/samue/Documents/MopLab/Moppen\startup.c ****  * 	startup.c
+   3:C:/Users/samue/Documents/MopLab/Moppen\startup.c ****  *
+   4:C:/Users/samue/Documents/MopLab/Moppen\startup.c ****  */
+   5:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
+   6:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+   7:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** void startup ( void )
+   8:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {
+  26              		.loc 1 8 0
+  27              		.cfi_startproc
+  28              		@ Naked Function: prologue and epilogue provided by programmer.
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+   9:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** __asm volatile(
+  31              		.loc 1 9 0
+  32              		.syntax divided
+  33              	@ 9 "C:/Users/samue/Documents/MopLab/Moppen/startup.c" 1
+  34 0000 0248     		 LDR R0,=0x2001C000
+  35 0002 8546     	 MOV SP,R0
+  36 0004 FFF7FEFF 	 BL main
+  37 0008 FEE7     	_exit: B .
+  38              	
+  39              	@ 0 "" 2
+  10:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  11:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	" MOV SP,R0\n"
+  12:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	" BL main\n"				/* call main */
+  13:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	"_exit: B .\n"				/* never return */
+  14:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	) ;
+  15:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** }
+  40              		.loc 1 15 0
+  41              		.thumb
+  42              		.syntax unified
+  43 000a C046     		nop
+  44              		.cfi_endproc
+  45              	.LFE0:
+  47              		.bss
+  48              		.align	2
+  49              	buffer:
+  50 0000 00000000 		.space	1164
+  50      00000000 
+  50      00000000 
+  50      00000000 
+  50      00000000 
+  52              		.global	ball_geometry
+  53              		.data
+  54              		.align	2
+  57              	ball_geometry:
+  58 0000 0C000000 		.word	12
+  59 0004 04000000 		.word	4
+  60 0008 04000000 		.word	4
+  61 000c 00       		.byte	0
+  62 000d 01       		.byte	1
+  63 000e 00       		.byte	0
+  64 000f 02       		.byte	2
+  65 0010 01       		.byte	1
+  66 0011 00       		.byte	0
+  67 0012 01       		.byte	1
+  68 0013 01       		.byte	1
+  69 0014 01       		.byte	1
+  70 0015 02       		.byte	2
+  71 0016 01       		.byte	1
+  72 0017 03       		.byte	3
+  73 0018 02       		.byte	2
+  74 0019 00       		.byte	0
+  75 001a 02       		.byte	2
+  76 001b 01       		.byte	1
+  77 001c 02       		.byte	2
+  78 001d 02       		.byte	2
+  79 001e 02       		.byte	2
+  80 001f 03       		.byte	3
+  81 0020 03       		.byte	3
+  82 0021 01       		.byte	1
+  83 0022 03       		.byte	3
+  84 0023 01       		.byte	1
+  85 0024 00000000 		.space	16
+  85      00000000 
+  85      00000000 
+  85      00000000 
+  86              		.align	2
+  89              	ball:
+  90 0034 00000000 		.word	ball_geometry
+  91 0038 00000000 		.word	0
+  92 003c 00000000 		.word	0
+  93 0040 01000000 		.word	1
+  94 0044 01000000 		.word	1
+  95 0048 00000000 		.word	draw_object
+  96 004c 00000000 		.word	clear_object
+  97 0050 00000000 		.word	move_object
+  98 0054 00000000 		.word	set_object_speed
+  99 0058 00000000 		.word	pong_set_position
+ 100              		.global	paddle_geometry
+ 101              		.align	2
+ 104              	paddle_geometry:
+ 105 005c 08000000 		.word	8
+ 106 0060 01000000 		.word	1
+ 107 0064 08000000 		.word	8
+ 108 0068 00       		.byte	0
+ 109 0069 00       		.byte	0
+ 110 006a 00       		.byte	0
+ 111 006b 01       		.byte	1
+ 112 006c 00       		.byte	0
+ 113 006d 02       		.byte	2
+ 114 006e 00       		.byte	0
+ 115 006f 03       		.byte	3
+ 116 0070 00       		.byte	0
+ 117 0071 04       		.byte	4
+ 118 0072 00       		.byte	0
+ 119 0073 05       		.byte	5
+ 120 0074 00       		.byte	0
+ 121 0075 06       		.byte	6
+ 122 0076 00       		.byte	0
+ 123 0077 07       		.byte	7
+ 124 0078 00000000 		.space	24
+ 124      00000000 
+ 124      00000000 
+ 124      00000000 
+ 124      00000000 
+ 125              		.align	2
+ 128              	p1paddle:
+ 129 0090 00000000 		.word	paddle_geometry
+ 130 0094 00000000 		.word	0
+ 131 0098 00000000 		.word	0
+ 132 009c 02000000 		.word	2
+ 133 00a0 1C000000 		.word	28
+ 134 00a4 00000000 		.word	draw_object
+ 135 00a8 00000000 		.word	clear_object
+ 136 00ac 00000000 		.word	move_object
+ 137 00b0 00000000 		.word	set_object_speed
+ 138 00b4 00000000 		.word	pong_set_position
+ 139              		.align	2
+ 142              	p2paddle:
+ 143 00b8 00000000 		.word	paddle_geometry
+ 144 00bc 00000000 		.word	0
+ 145 00c0 00000000 		.word	0
+ 146 00c4 7F000000 		.word	127
+ 147 00c8 1C000000 		.word	28
+ 148 00cc 00000000 		.word	draw_object
+ 149 00d0 00000000 		.word	clear_object
+ 150 00d4 00000000 		.word	move_object
+ 151 00d8 00000000 		.word	set_object_speed
+ 152 00dc 00000000 		.word	pong_set_position
+ 153              		.section	.rodata
+ 154              		.align	2
+ 155              	.LC0:
+ 156 0000 506C6179 		.ascii	"Player 1: \000"
+ 156      65722031 
+ 156      3A2000
+ 157 000b 00       		.align	2
+ 158              	.LC2:
+ 159 000c 506C6179 		.ascii	"Player 2: \000"
+ 159      65722032 
+ 159      3A2000
+ 160              		.text
+ 161              		.align	1
+ 162              		.global	main
+ 163              		.syntax unified
+ 164              		.code	16
+ 165              		.thumb_func
+ 166              		.fpu softvfp
+ 168              	main:
+ 169              	.LFB1:
+  16:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  17:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "delay.h"
+  18:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "lcd_drivers.h"
+  19:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "ascii_drivers.h"
+  20:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "keypad_drivers.h"
+  21:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "portDeclare.h"
+  22:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #include "ponglogic.h"
+  23:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  24:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #define SIMULATOR
+  25:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #define ascii
+  26:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #define lcd
+  27:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** #define keypad
+  28:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  29:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** geometry ball_geometry={12,4,4,
+  30:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {{0,1},{0,2},
+  31:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {1,0},{1,1},{1,2},{1,3},
+  32:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {2,0},{2,1},{2,2},{2,3},
+  33:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {3,1},{3,1}}
+  34:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** };
+  35:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  36:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** static object ball = {
+  37:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	&ball_geometry,
+  38:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	0,0,
+  39:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	1,1,
+  40:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	draw_object,
+  41:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	clear_object,
+  42:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	move_object,
+  43:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	set_object_speed,
+  44:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position
+  45:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	};
+  46:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  47:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** geometry paddle_geometry={8,1,8,
+  48:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** {{0,0},{0,1},{0,2},{0,3},{0,4},{0,5},{0,6},{0,7}}
+  49:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** };
+  50:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  51:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** static object p1paddle = {
+  52:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	&paddle_geometry,
+  53:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	0,0,
+  54:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	2,28,
+  55:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	draw_object,
+  56:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	clear_object,
+  57:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	move_object,
+  58:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	set_object_speed,
+  59:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position
+  60:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	};
+  61:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	static object p2paddle = {
+  62:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	&paddle_geometry,
+  63:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	0,0,
+  64:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	127,28,
+  65:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	draw_object,
+  66:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	clear_object,
+  67:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	move_object,
+  68:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	set_object_speed,
+  69:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position
+  70:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	};
+  71:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+  72:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** void main(int argc, char **argv){
+ 170              		.loc 1 72 0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 56
+ 173              		@ frame_needed = 1, uses_anonymous_args = 0
+ 174 0000 90B5     		push	{r4, r7, lr}
+ 175              		.cfi_def_cfa_offset 12
+ 176              		.cfi_offset 4, -12
+ 177              		.cfi_offset 7, -8
+ 178              		.cfi_offset 14, -4
+ 179 0002 8FB0     		sub	sp, sp, #60
+ 180              		.cfi_def_cfa_offset 72
+ 181 0004 00AF     		add	r7, sp, #0
+ 182              		.cfi_def_cfa_register 7
+ 183 0006 7860     		str	r0, [r7, #4]
+ 184 0008 3960     		str	r1, [r7]
+  73:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#ifdef USBDM
+  74:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		*((unsigned long *)0x40023830) = 0x18;
+  75:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		__asm volatile(" LDR R0,=0x08000209\n BLX R0 \n");
+  76:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#endif
+  77:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#ifdef ascii
+  78:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		ascii_init_app();
+ 185              		.loc 1 78 0
+ 186 000a FFF7FEFF 		bl	ascii_init_app
+  79:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		ascii_init();
+ 187              		.loc 1 79 0
+ 188 000e FFF7FEFF 		bl	ascii_init
+  80:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		ascii_gotoxy(1,1);
+ 189              		.loc 1 80 0
+ 190 0012 0121     		movs	r1, #1
+ 191 0014 0120     		movs	r0, #1
+ 192 0016 FFF7FEFF 		bl	ascii_gotoxy
+  81:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		char *s;
+  82:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		char string1[] = "Player 1: ";
+ 193              		.loc 1 82 0
+ 194 001a 1820     		movs	r0, #24
+ 195 001c 3B18     		adds	r3, r7, r0
+ 196 001e 4A4A     		ldr	r2, .L10
+ 197 0020 12CA     		ldmia	r2!, {r1, r4}
+ 198 0022 12C3     		stmia	r3!, {r1, r4}
+ 199 0024 1188     		ldrh	r1, [r2]
+ 200 0026 1980     		strh	r1, [r3]
+ 201 0028 9278     		ldrb	r2, [r2, #2]
+ 202 002a 9A70     		strb	r2, [r3, #2]
+  83:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		s = string1;
+ 203              		.loc 1 83 0
+ 204 002c 3B18     		adds	r3, r7, r0
+ 205 002e 7B63     		str	r3, [r7, #52]
+  84:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	while (*s)
+ 206              		.loc 1 84 0
+ 207 0030 06E0     		b	.L3
+ 208              	.L4:
+  85:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		ascii_write_char(*s++);
+ 209              		.loc 1 85 0
+ 210 0032 7B6B     		ldr	r3, [r7, #52]
+ 211 0034 5A1C     		adds	r2, r3, #1
+ 212 0036 7A63     		str	r2, [r7, #52]
+ 213 0038 1B78     		ldrb	r3, [r3]
+ 214 003a 1800     		movs	r0, r3
+ 215 003c FFF7FEFF 		bl	ascii_write_char
+ 216              	.L3:
+  84:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	while (*s)
+ 217              		.loc 1 84 0
+ 218 0040 7B6B     		ldr	r3, [r7, #52]
+ 219 0042 1B78     		ldrb	r3, [r3]
+ 220 0044 002B     		cmp	r3, #0
+ 221 0046 F4D1     		bne	.L4
+  86:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	ascii_gotoxy(11,2);
+ 222              		.loc 1 86 0
+ 223 0048 0221     		movs	r1, #2
+ 224 004a 0B20     		movs	r0, #11
+ 225 004c FFF7FEFF 		bl	ascii_gotoxy
+  87:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	char string2[] = "Player 2: ";
+ 226              		.loc 1 87 0
+ 227 0050 0C20     		movs	r0, #12
+ 228 0052 3B18     		adds	r3, r7, r0
+ 229 0054 3D4A     		ldr	r2, .L10+4
+ 230 0056 12CA     		ldmia	r2!, {r1, r4}
+ 231 0058 12C3     		stmia	r3!, {r1, r4}
+ 232 005a 1188     		ldrh	r1, [r2]
+ 233 005c 1980     		strh	r1, [r3]
+ 234 005e 9278     		ldrb	r2, [r2, #2]
+ 235 0060 9A70     		strb	r2, [r3, #2]
+  88:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	s = string2;
+ 236              		.loc 1 88 0
+ 237 0062 3B18     		adds	r3, r7, r0
+ 238 0064 7B63     		str	r3, [r7, #52]
+  89:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	while (*s)
+ 239              		.loc 1 89 0
+ 240 0066 06E0     		b	.L5
+ 241              	.L6:
+  90:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	ascii_write_char(*s++);
+ 242              		.loc 1 90 0
+ 243 0068 7B6B     		ldr	r3, [r7, #52]
+ 244 006a 5A1C     		adds	r2, r3, #1
+ 245 006c 7A63     		str	r2, [r7, #52]
+ 246 006e 1B78     		ldrb	r3, [r3]
+ 247 0070 1800     		movs	r0, r3
+ 248 0072 FFF7FEFF 		bl	ascii_write_char
+ 249              	.L5:
+  89:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	while (*s)
+ 250              		.loc 1 89 0
+ 251 0076 7B6B     		ldr	r3, [r7, #52]
+ 252 0078 1B78     		ldrb	r3, [r3]
+ 253 007a 002B     		cmp	r3, #0
+ 254 007c F4D1     		bne	.L6
+  91:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#endif
+  92:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	
+  93:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#ifdef lcd
+  94:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		init_lcd();
+ 255              		.loc 1 94 0
+ 256 007e FFF7FEFF 		bl	init_lcd
+  95:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		graphic_initialize();
+ 257              		.loc 1 95 0
+ 258 0082 FFF7FEFF 		bl	graphic_initialize
+  96:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#endif
+  97:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#ifdef keypad
+  98:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		init_keypad();
+ 259              		.loc 1 98 0
+ 260 0086 FFF7FEFF 		bl	init_keypad
+  99:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#endif
+ 100:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#ifndef SIMULATOR
+ 101:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		graphic_clean_screen();
+ 102:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	#endif
+ 103:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	
+ 104:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	unsigned char playerScore[2] = {0,0};
+ 261              		.loc 1 104 0
+ 262 008a 0821     		movs	r1, #8
+ 263 008c 7B18     		adds	r3, r7, r1
+ 264 008e 0022     		movs	r2, #0
+ 265 0090 1A70     		strb	r2, [r3]
+ 266 0092 7B18     		adds	r3, r7, r1
+ 267 0094 0022     		movs	r2, #0
+ 268 0096 5A70     		strb	r2, [r3, #1]
+ 105:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	unsigned char *pScore;
+ 106:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	
+ 107:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pScore = playerScore;
+ 269              		.loc 1 107 0
+ 270 0098 7B18     		adds	r3, r7, r1
+ 271 009a 3B63     		str	r3, [r7, #48]
+ 108:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_inc_playerScore(pScore,1);
+ 272              		.loc 1 108 0
+ 273 009c 3B6B     		ldr	r3, [r7, #48]
+ 274 009e 0121     		movs	r1, #1
+ 275 00a0 1800     		movs	r0, r3
+ 276 00a2 FFF7FEFF 		bl	pong_inc_playerScore
+ 109:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_inc_playerScore(pScore,2);
+ 277              		.loc 1 109 0
+ 278 00a6 3B6B     		ldr	r3, [r7, #48]
+ 279 00a8 0221     		movs	r1, #2
+ 280 00aa 1800     		movs	r0, r3
+ 281 00ac FFF7FEFF 		bl	pong_inc_playerScore
+ 110:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pobject p = &ball;
+ 282              		.loc 1 110 0
+ 283 00b0 274B     		ldr	r3, .L10+8
+ 284 00b2 FB62     		str	r3, [r7, #44]
+ 111:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pobject player1 = &p1paddle;
+ 285              		.loc 1 111 0
+ 286 00b4 274B     		ldr	r3, .L10+12
+ 287 00b6 BB62     		str	r3, [r7, #40]
+ 112:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pobject player2 = &p2paddle;
+ 288              		.loc 1 112 0
+ 289 00b8 274B     		ldr	r3, .L10+16
+ 290 00ba 7B62     		str	r3, [r7, #36]
+ 113:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position(player1,2,28);
+ 291              		.loc 1 113 0
+ 292 00bc BB6A     		ldr	r3, [r7, #40]
+ 293 00be 1C22     		movs	r2, #28
+ 294 00c0 0221     		movs	r1, #2
+ 295 00c2 1800     		movs	r0, r3
+ 296 00c4 FFF7FEFF 		bl	pong_set_position
+ 114:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position(player2,127,28);
+ 297              		.loc 1 114 0
+ 298 00c8 7B6A     		ldr	r3, [r7, #36]
+ 299 00ca 1C22     		movs	r2, #28
+ 300 00cc 7F21     		movs	r1, #127
+ 301 00ce 1800     		movs	r0, r3
+ 302 00d0 FFF7FEFF 		bl	pong_set_position
+ 115:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	pong_set_position(p,64-(p->geo->sizex)/2,32-(p->geo->sizey)/2);
+ 303              		.loc 1 115 0
+ 304 00d4 FB6A     		ldr	r3, [r7, #44]
+ 305 00d6 1B68     		ldr	r3, [r3]
+ 306 00d8 5B68     		ldr	r3, [r3, #4]
+ 307 00da 002B     		cmp	r3, #0
+ 308 00dc 00DA     		bge	.L7
+ 309 00de 0133     		adds	r3, r3, #1
+ 310              	.L7:
+ 311 00e0 5B10     		asrs	r3, r3, #1
+ 312 00e2 5B42     		rsbs	r3, r3, #0
+ 313 00e4 4033     		adds	r3, r3, #64
+ 314 00e6 1900     		movs	r1, r3
+ 315 00e8 FB6A     		ldr	r3, [r7, #44]
+ 316 00ea 1B68     		ldr	r3, [r3]
+ 317 00ec 9B68     		ldr	r3, [r3, #8]
+ 318 00ee 002B     		cmp	r3, #0
+ 319 00f0 00DA     		bge	.L8
+ 320 00f2 0133     		adds	r3, r3, #1
+ 321              	.L8:
+ 322 00f4 5B10     		asrs	r3, r3, #1
+ 323 00f6 5B42     		rsbs	r3, r3, #0
+ 324 00f8 2033     		adds	r3, r3, #32
+ 325 00fa 1A00     		movs	r2, r3
+ 326 00fc FB6A     		ldr	r3, [r7, #44]
+ 327 00fe 1800     		movs	r0, r3
+ 328 0100 FFF7FEFF 		bl	pong_set_position
+ 116:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 
+ 117:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	set_object_speed(player2,0,2);
+ 329              		.loc 1 117 0
+ 330 0104 7B6A     		ldr	r3, [r7, #36]
+ 331 0106 0222     		movs	r2, #2
+ 332 0108 0021     		movs	r1, #0
+ 333 010a 1800     		movs	r0, r3
+ 334 010c FFF7FEFF 		bl	set_object_speed
+ 118:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	p->set_speed(p,4,1);
+ 335              		.loc 1 118 0
+ 336 0110 FB6A     		ldr	r3, [r7, #44]
+ 337 0112 1B6A     		ldr	r3, [r3, #32]
+ 338 0114 F86A     		ldr	r0, [r7, #44]
+ 339 0116 0122     		movs	r2, #1
+ 340 0118 0421     		movs	r1, #4
+ 341 011a 9847     		blx	r3
+ 342              	.LVL0:
+ 343              	.L9:
+ 119:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 	while(1){
+ 120:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		move_object(p);
+ 344              		.loc 1 120 0 discriminator 1
+ 345 011c FB6A     		ldr	r3, [r7, #44]
+ 346 011e 1800     		movs	r0, r3
+ 347 0120 FFF7FEFF 		bl	move_object
+ 121:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		move_object(player1);
+ 348              		.loc 1 121 0 discriminator 1
+ 349 0124 BB6A     		ldr	r3, [r7, #40]
+ 350 0126 1800     		movs	r0, r3
+ 351 0128 FFF7FEFF 		bl	move_object
+ 122:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		move_object(player2); 
+ 352              		.loc 1 122 0 discriminator 1
+ 353 012c 7B6A     		ldr	r3, [r7, #36]
+ 354 012e 1800     		movs	r0, r3
+ 355 0130 FFF7FEFF 		bl	move_object
+ 123:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		pong_inc_playerScore(pScore,1);
+ 356              		.loc 1 123 0 discriminator 1
+ 357 0134 3B6B     		ldr	r3, [r7, #48]
+ 358 0136 0121     		movs	r1, #1
+ 359 0138 1800     		movs	r0, r3
+ 360 013a FFF7FEFF 		bl	pong_inc_playerScore
+ 124:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		delay_milli(40);
+ 361              		.loc 1 124 0 discriminator 1
+ 362 013e 2820     		movs	r0, #40
+ 363 0140 FFF7FEFF 		bl	delay_milli
+ 120:C:/Users/samue/Documents/MopLab/Moppen\startup.c **** 		move_object(player1);
+ 364              		.loc 1 120 0 discriminator 1
+ 365 0144 EAE7     		b	.L9
+ 366              	.L11:
+ 367 0146 C046     		.align	2
+ 368              	.L10:
+ 369 0148 00000000 		.word	.LC0
+ 370 014c 0C000000 		.word	.LC2
+ 371 0150 34000000 		.word	ball
+ 372 0154 90000000 		.word	p1paddle
+ 373 0158 B8000000 		.word	p2paddle
+ 374              		.cfi_endproc
+ 375              	.LFE1:
+ 377              	.Letext0:
+ 378              		.file 2 "C:/Users/samue/Documents/MopLab/Moppen/lcd_drivers.h"
+ 379              		.file 3 "C:/Users/samue/Documents/MopLab/Moppen/ponglogic.h"

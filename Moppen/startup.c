@@ -48,10 +48,20 @@ geometry paddle_geometry={8,1,8,
 {{0,0},{0,1},{0,2},{0,3},{0,4},{0,5},{0,6},{0,7}}
 };
 
-static object paddle = {
+static object p1paddle = {
 	&paddle_geometry,
 	0,0,
 	2,28,
+	draw_object,
+	clear_object,
+	move_object,
+	set_object_speed,
+	pong_set_position
+	};
+	static object p2paddle = {
+	&paddle_geometry,
+	0,0,
+	127,28,
 	draw_object,
 	clear_object,
 	move_object,
@@ -98,9 +108,9 @@ void main(int argc, char **argv){
 	pong_inc_playerScore(pScore,1);
 	pong_inc_playerScore(pScore,2);
 	pobject p = &ball;
-	pobject player1 = &paddle;
-	pobject player2 = &paddle;
-	pong_set_position(player1,120,28);
+	pobject player1 = &p1paddle;
+	pobject player2 = &p2paddle;
+	pong_set_position(player1,2,28);
 	pong_set_position(player2,127,28);
 	pong_set_position(p,64-(p->geo->sizex)/2,32-(p->geo->sizey)/2);
 
