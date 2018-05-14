@@ -50,7 +50,10 @@ unsigned char ascii_read_status(void){
 	*portModerE = (*portModerE & 0x0000FFFF);
 	ascii_ctrl_bit_clear(B_RS);
 	ascii_ctrl_bit_set(B_RW);
-	unsigned char rv = ascii_read_controller();
+	unsigned char rv; 
+	#ifndef SIMULATOR
+		rv = ascii_read_controller();
+	#endif
 	*portModerE = (*portModerE | 0x55550000);
 	return rv;
 }
@@ -66,6 +69,7 @@ unsigned char ascii_read_data(void){
 
 void ascii_init(void){
 	while((ascii_read_status() & 0x80) == 0x80){}
+	//ascii_read_status();
 	delay_mikro(8);
 	ascii_write_cmd(0x38);
 	delay_mikro(40);

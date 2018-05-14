@@ -44,6 +44,21 @@ static object ball = {
 	pong_set_position
 	};
 
+geometry paddle_geometry={8,1,8,
+{{0,0},{0,1},{0,2},{0,3},{0,4},{0,5},{0,6},{0,7}}
+};
+
+static object paddle = {
+	&paddle_geometry,
+	0,0,
+	2,28,
+	draw_object,
+	clear_object,
+	move_object,
+	set_object_speed,
+	pong_set_position
+	};
+
 void main(int argc, char **argv){
 	#ifdef USBDM
 		*((unsigned long *)0x40023830) = 0x18;
@@ -82,20 +97,24 @@ void main(int argc, char **argv){
 	pScore = playerScore;
 	pong_inc_playerScore(pScore,1);
 	pong_inc_playerScore(pScore,2);
-	//graphic_pixel(66,33,1);
 	pobject p = &ball;
+	pobject player1 = &paddle;
+	pobject player2 = &paddle;
+	pong_set_position(player1,120,28);
+	pong_set_position(player2,127,28);
 	pong_set_position(p,64-(p->geo->sizex)/2,32-(p->geo->sizey)/2);
-//	draw_object(p);
-	
+
+	set_object_speed(player2,0,2);
 	p->set_speed(p,4,1);
 	while(1){
 		move_object(p);
-		//playerScore[0] = playerScore[0] +1; 
+		move_object(player1);
+		move_object(player2); 
 		pong_inc_playerScore(pScore,1);
 		delay_milli(40);
 	}
 
-	
+	/*
 	//Testing av keyRead metoden i keypad_drivers
 	while(1){
 	unsigned volatile short keys = keyRead();
@@ -105,7 +124,7 @@ void main(int argc, char **argv){
 			graphic_pixel(i+1,i+1,1);
 		}
 	}
-	}
+	}*/
 	
 	
 //	plcdBuffer pbuff = &buffer;
